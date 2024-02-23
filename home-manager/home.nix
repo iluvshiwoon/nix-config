@@ -49,8 +49,8 @@
 
   # TODO: Set your username
   home = {
-    username = "iluvshiwoon";
-    homeDirectory = "/home/iluvshiwoon";
+    username = "kgriset";
+    homeDirectory = "/home/kgriset";
   };
 
   # Add stuff for your user as you see fit:
@@ -111,12 +111,14 @@
     unzip
     wget
     xdg-utils
+
+    rofi
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    #(nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
