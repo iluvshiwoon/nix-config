@@ -20,6 +20,7 @@
 
       input {
         kb_layout = us
+        kb_options = compose:ralt
         numlock_by_default = true
         follow_mouse = 1
         sensitivity = 0
@@ -142,7 +143,7 @@
       bind = $mainMod, Return, exec, kitty
       bind = ALT, Return, exec, kitty --title float_kitty
       bind = $mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'
-      bind = $mainMod, B, exec, floorp
+      bind = $mainMod, B, exec, vivaldi
       bind = $mainMod, Q, killactive,
       bind = $mainMod, F, fullscreen, 0
       bind = $mainMod SHIFT, F, fullscreen, 1

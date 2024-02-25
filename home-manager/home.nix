@@ -126,7 +126,6 @@
   ];
   home.sessionVariables = {
     EDITOR = "nvim";
-    # SHELL = "nushell";
   };
   # Enable home-manager and git
   programs.home-manager.enable = true;
