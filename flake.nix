@@ -18,7 +18,8 @@
     # hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     prism.url = "github:IogaMaster/prism";
-
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
     plugin-betterTerm-nvim.url = "github:CRAG666/betterTerm.nvim";
     plugin-betterTerm-nvim.flake = false;
     hyprpicker.url = "github:hyprwm/hyprpicker";
@@ -42,7 +43,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, nix-ld, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -83,7 +84,9 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+             nix-ld.nixosModules.nix-ld
+            { programs.nix-ld.dev.enable = true; }
+           ./nixos/configuration.nix
           ];
         };
       };
