@@ -75,10 +75,12 @@
   programs.zsh.enable = true;
   programs.hyprland.enable = true;
   environment.systemPackages = with pkgs; [
+    qemu
     git
     firefox
     vim
     networkmanagerapplet
+    quickemu
   ];
   # rtkit is optional but recommended
   security.rtkit.enable = true;

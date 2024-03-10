@@ -80,6 +80,7 @@
       vim-nix
       vim-fugitive
       norminette-vim
+      formatter_42
       {
         plugin = nvim-colorizer-lua;
         config = toLua "require('colorizer').setup()";
