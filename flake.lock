@@ -484,22 +484,6 @@
         "type": "github"
       }
     },
-    "plugin-formatter_42": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1693743643,
-        "narHash": "sha256-LutpQuceEypwwln9LZuwCzM1Eu2Cmvox1KtwpgwmTDc=",
-        "owner": "cacharle",
-        "repo": "c_formatter_42.vim",
-        "rev": "7a2d50f6683d6f58a2c95375524b4406d6bdc2c3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cacharle",
-        "repo": "c_formatter_42.vim",
-        "type": "github"
-      }
-    },
     "plugin-header_42_vim": {
       "flake": false,
       "locked": {
@@ -566,7 +550,6 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "plugin-betterTerm-nvim": "plugin-betterTerm-nvim",
-        "plugin-formatter_42": "plugin-formatter_42",
         "plugin-header_42_vim": "plugin-header_42_vim",
         "plugin-norminette-vim": "plugin-norminette-vim",
         "prism": "prism"

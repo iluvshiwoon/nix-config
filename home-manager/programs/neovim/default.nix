@@ -17,6 +17,11 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      prettierd
+      eslint_d
+      biome
+      nodePackages_latest.typescript-language-server
+      typescript
       lua-language-server
       nil
       ccls
@@ -80,7 +85,6 @@
       vim-nix
       vim-fugitive
       norminette-vim
-      formatter_42
       {
         plugin = nvim-colorizer-lua;
         config = toLua "require('colorizer').setup()";
