@@ -5,7 +5,7 @@
     package = pkgs.emacs29;
     extraPackages = epkgs : [
       epkgs.evil
-      epkgs.evil-collections
+      epkgs.evil-collection
     ];
   };
 
