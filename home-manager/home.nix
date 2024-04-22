@@ -58,6 +58,12 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
+    nix-prefetch
+    nixfmt
+    ccls
+    glslang
+    multimarkdown
+    shellcheck
     nodejs_21
     telegram-desktop
     vivaldi

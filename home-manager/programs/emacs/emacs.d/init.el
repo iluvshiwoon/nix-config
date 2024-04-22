@@ -1,8 +1,6 @@
-(package-initialize)
-
 ;; Path to nano emacs modules (mandatory)
-(add-to-list 'load-path "/home/iluvshiwoon/nix-config/home-manager/programs/emacs/emacs.d/nano-emacs")
-(add-to-list 'load-path ".")
+
+(add-to-list 'load-path "/home/iluvshiwoon/.emacs.d/nano-emacs")
 
 ;; load nano theme
 (require 'nano)
