@@ -2,13 +2,6 @@
 vim.keymap.set("n", "<leader>dd", "<cmd>Lexplore %:p:h<CR>")
 vim.keymap.set("n", "<leader>da", "<cmd>Lexplore<CR>")
 
---telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>ps', function ()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
 
 -- harpoon
 local mark = require("harpoon.mark")
@@ -19,6 +12,13 @@ vim.keymap.set("n", "<leader>j", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<leader>k", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+
+--telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<Leader>ff",builtin.find_files, { desc = "Fuzzy find files" })
+vim.keymap.set("n", "<Leader>fr",builtin.oldfiles, { desc = "Fuzzy find recent files" })
+vim.keymap.set("n", "<Leader>fs",builtin.live_grep, { desc = "Find string" })
+vim.keymap.set("n", "<Leader>fc",builtin.grep_string, { desc = "Find string under cursor" })
 
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
@@ -45,10 +45,10 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<leader>P", [["+p]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -63,7 +63,7 @@ local lsp_formatting = function(bufnr)
         bufnr = bufnr,
     })
 end
-vim.keymap.set("n", "<leader>f", lsp_formatting)
+-- vim.keymap.set("n", "<leader>ft", lsp_formatting)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -77,19 +77,19 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 -- terminal
 local betterTerm = require('betterTerm')
-vim.keymap.set({"n", "t"}, "<C-;>", betterTerm.open, { desc = "Open terminal"})
+vim.keymap.set({ "n", "t" }, "<C-;>", betterTerm.open, { desc = "Open terminal" })
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
-vim.keymap.set({"n"}, "<leader>tt", betterTerm.select, { desc = "Select terminal"})
+vim.keymap.set({ "n" }, "<leader>tt", betterTerm.select, { desc = "Select terminal" })
 local current = 2
 vim.keymap.set(
-    {"n"}, "<leader>tn",
+    { "n" }, "<leader>tn",
     function()
         betterTerm.open(current)
         current = current + 1
     end,
-    { desc = "New terminal"}
+    { desc = "New terminal" }
 )
 
 -- dap
-vim.keymap.set({"n"}, "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
-vim.keymap.set({"n"}, "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })
+vim.keymap.set({ "n" }, "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
+vim.keymap.set({ "n" }, "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })
