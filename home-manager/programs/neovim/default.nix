@@ -126,8 +126,16 @@
         config = toLua "require('Comment').setup()";
       }
       {
+        plugin = bufferline-nvim;
+        config = toLuaFile ./lua/plugins/bufferline.lua;
+      }
+      {
         plugin = lualine-nvim;
         config = toLuaFile ./lua/plugins/lualine.lua;
+      }
+      {
+        plugin = dressing-nvim;
+        config = toLua "require('dressing').setup{}";
       }
     ];
     extraLuaConfig = ''

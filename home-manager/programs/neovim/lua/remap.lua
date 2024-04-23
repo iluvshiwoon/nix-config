@@ -5,6 +5,12 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
+-- bufferline
+keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<CR>", { desc = "Close right tabs" })
+keymap.set("n", "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", { desc = "Close left tabs" })
+keymap.set("n", "<leader>bc", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close other tabs" })
+keymap.set("n", "<leader>bf", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
+
 -- windows
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
