@@ -5,17 +5,26 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 local todo_comments = require("todo-comments")
-keymap.set("n", "[t",function() todo_comments.jump_next() end, { desc = "Next todo comment" })
-keymap.set("n", "]t",function() todo_comments.jump_prev() end, { desc = "Previous todo comment" })
+keymap.set("n", "[t", function() todo_comments.jump_next() end, { desc = "Next todo comment" })
+keymap.set("n", "]t", function() todo_comments.jump_prev() end, { desc = "Previous todo comment" })
+keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 
 -- substitute
 local substitute = require('substitute')
-keymap.set("n", "s",substitute.operator, { desc = "Substitute with motion" })
-keymap.set("n", "ss",substitute.line, { desc = "Substitute line" })
-keymap.set("n", "S",substitute.eol, { desc = "Substitute to end of line" })
-keymap.set("x", "s",substitute.visual, { desc = "Substitute in visual mode" })
+keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
+keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
+keymap.set("n", "S", substitute.eol, { desc = "Substitute to end of line" })
+keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
 
-
+-- trouble
+keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<CR>", { desc = "Open/close trouble list" })
+keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>",
+    { desc = "Open trouble workspace diagnostics" })
+keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>",
+    { desc = "Open trouble document diagnostics" })
+keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open trouble quickfix list" })
+keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", { desc = "Open trouble location list" })
+keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<CR>", { desc = "Open todos in trouble" })
 
 -- bufferline
 keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<CR>", { desc = "Close right tabs" })

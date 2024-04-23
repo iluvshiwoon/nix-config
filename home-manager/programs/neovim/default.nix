@@ -17,6 +17,7 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      lazygit
       prettierd
       eslint_d
       biome
@@ -33,6 +34,15 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      lazygit-nvim
+      {
+        plugin = gitsigns-nvim;
+        config = toLuaFile ./lua/plugins/gitsigns.lua;
+      }
+      {
+        plugin = trouble-nvim;
+        config = toLua "require('trouble').setup{}";
+      }
       {
         plugin = surround-nvim;
         config = toLua "require('surround').setup{mappings_style = 'surround'}";

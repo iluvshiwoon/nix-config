@@ -1,7 +1,4 @@
 {
-  #TODO: do something
-  #BUG: do SOM
-  # FIX:
   description = "Your new nix config";
 
   inputs = {
