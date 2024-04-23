@@ -33,19 +33,23 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+
       {
-        plugin = betterTerm-nvim;
-        config = toLua "require('betterTerm').setup()";
+        plugin = alpha-nvim;
+        config = toLuaFile ./lua/plugins/alpha.lua;
+
       }
 
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ./lua/plugins/lsp.lua;
       }
+
       {
         plugin = nvim-dap-ui;
         config = toLuaFile ./lua/plugins/dap-ui.lua;
       }
+
       {
         plugin = nvim-dap;
         config = toLua ''
@@ -109,6 +113,12 @@
         plugin = telescope-nvim;
         config = toLuaFile ./lua/plugins/telescope.lua;
       }
+
+      {
+        plugin = nvim-tree-lua;
+        config = toLuaFile ./lua/plugins/tree.lua;
+      }
+
       telescope-fzf-native-nvim
       nvim-web-devicons
       {

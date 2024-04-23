@@ -1,60 +1,62 @@
--- netrw
-vim.keymap.set("n", "<leader>dd", "<cmd>Lexplore %:p:h<CR>")
-vim.keymap.set("n", "<leader>da", "<cmd>Lexplore<CR>")
+local keymap = vim.keymap
 
+-- keymap
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+
+-- windows
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make window equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+
+-- tree
+keymap.set("n", "<leader>ef", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+keymap.set("n", "<leader>ec", "<cmd>NvimTreeClose<CR>", { desc = "Close file explorer" })
+keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
 
 -- harpoon
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-vim.keymap.set("n", "<leader>j", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<leader>k", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+keymap.set("n", "<leader>a", mark.add_file)
+keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+keymap.set("n", "<leader>j", function() ui.nav_file(1) end)
+keymap.set("n", "<leader>k", function() ui.nav_file(2) end)
+keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
+keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
 --telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set("n", "<Leader>ff",builtin.find_files, { desc = "Fuzzy find files" })
-vim.keymap.set("n", "<Leader>fr",builtin.oldfiles, { desc = "Fuzzy find recent files" })
-vim.keymap.set("n", "<Leader>fs",builtin.live_grep, { desc = "Find string" })
-vim.keymap.set("n", "<Leader>fc",builtin.grep_string, { desc = "Find string under cursor" })
+keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "Fuzzy find files" })
+keymap.set("n", "<Leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
+keymap.set("n", "<Leader>fs", builtin.live_grep, { desc = "Find string" })
+keymap.set("n", "<Leader>fc", builtin.grep_string, { desc = "Find string under cursor" })
+keymap.set("n", "<Leader>H", builtin.keymaps, { desc = "List keymaps" })
 
 -- undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Primeagen
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+keymap.set("n", "J", "mzJ`z")
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+keymap.set("x", "<leader>p", [["_dP]])
+keymap.set("n", "<leader>P", [["+p]])
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "<leader>P", [["+p]])
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set("n", "<leader>Y", [["+Y]])
 
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
--- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
-
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap.set("n", "Q", "<nop>")
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
@@ -63,33 +65,12 @@ local lsp_formatting = function(bufnr)
         bufnr = bufnr,
     })
 end
--- vim.keymap.set("n", "<leader>ft", lsp_formatting)
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
-
--- terminal
-local betterTerm = require('betterTerm')
-vim.keymap.set({ "n", "t" }, "<C-;>", betterTerm.open, { desc = "Open terminal" })
-vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
-vim.keymap.set({ "n" }, "<leader>tt", betterTerm.select, { desc = "Select terminal" })
-local current = 2
-vim.keymap.set(
-    { "n" }, "<leader>tn",
-    function()
-        betterTerm.open(current)
-        current = current + 1
-    end,
-    { desc = "New terminal" }
-)
+keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- dap
-vim.keymap.set({ "n" }, "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
-vim.keymap.set({ "n" }, "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })
+keymap.set({ "n" }, "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
+keymap.set({ "n" }, "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Start or continue the debugger" })
