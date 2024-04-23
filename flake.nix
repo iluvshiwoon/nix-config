@@ -1,4 +1,7 @@
 {
+  #TODO: do something
+  #BUG: do SOM
+  # FIX:
   description = "Your new nix config";
 
   inputs = {
@@ -38,6 +41,9 @@
 
     plugin-norminette-vim.url = "github:alexandregv/norminette-vim";
     plugin-norminette-vim.flake = false;
+
+    plugin-windex-nvim.url = "github:declancm/windex.nvim";
+    plugin-windex-nvim.flake = false;
 
     # Shameless plug: looking for a way to nixify your themes and make
 

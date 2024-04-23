@@ -23,6 +23,10 @@ vimPlugins = prev.vimPlugins // {
     name = "norminette-vim";
     src = inputs.plugin-norminette-vim;
   };
+  windex-nvim = prev.vimUtils.buildVimPlugin {
+    name = "windex-nvim";
+    src = inputs.plugin-windex-nvim;
+  };
  };
 };
 

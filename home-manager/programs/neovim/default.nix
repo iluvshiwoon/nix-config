@@ -33,6 +33,24 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = surround-nvim;
+        config = toLua "require('surround').setup{mappings_style = 'surround'}";
+      }
+      {
+        plugin = nvim-autopairs;
+        config = toLuaFile ./lua/plugins/autopairs.lua;
+      }
+      {
+        plugin = substitute-nvim;
+        config = toLua "require('substitute').setup()";
+      }
+      nvim-autopairs
+      lspkind-nvim
+      {
+        plugin = indent-blankline-nvim;
+        config = toLua "require('ibl').setup({indent = { char = '┊' }})";
+      }
 
       {
         plugin = alpha-nvim;
@@ -76,6 +94,11 @@
             },
           }
         '';
+      }
+      plenary-nvim
+      {
+        plugin = todo-comments-nvim;
+        config = toLua "require('todo-comments').setup()";
       }
       vim-tmux-navigator
       harpoon
@@ -121,6 +144,10 @@
 
       telescope-fzf-native-nvim
       nvim-web-devicons
+      {
+        plugin = windex-nvim;
+        config = toLua "require('windex').setup()";
+      }
       {
         plugin = comment-nvim;
         config = toLua "require('Comment').setup()";

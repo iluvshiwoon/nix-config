@@ -4,6 +4,18 @@ local keymap = vim.keymap
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+local todo_comments = require("todo-comments")
+keymap.set("n", "[t",function() todo_comments.jump_next() end, { desc = "Next todo comment" })
+keymap.set("n", "]t",function() todo_comments.jump_prev() end, { desc = "Previous todo comment" })
+
+-- substitute
+local substitute = require('substitute')
+keymap.set("n", "s",substitute.operator, { desc = "Substitute with motion" })
+keymap.set("n", "ss",substitute.line, { desc = "Substitute line" })
+keymap.set("n", "S",substitute.eol, { desc = "Substitute to end of line" })
+keymap.set("x", "s",substitute.visual, { desc = "Substitute in visual mode" })
+
+
 
 -- bufferline
 keymap.set("n", "<leader>br", "<cmd>BufferLineCloseRight<CR>", { desc = "Close right tabs" })
@@ -16,6 +28,7 @@ keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make window equal size" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+keymap.set("n", "<leader>sm", "<cmd>lua require('windex').toggle_nvim_maximize()<CR>", { desc = "Maximize window" })
 
 -- tree
 keymap.set("n", "<leader>ef", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
@@ -39,6 +52,8 @@ keymap.set("n", "<Leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent file
 keymap.set("n", "<Leader>fs", builtin.live_grep, { desc = "Find string" })
 keymap.set("n", "<Leader>fc", builtin.grep_string, { desc = "Find string under cursor" })
 keymap.set("n", "<Leader>H", builtin.keymaps, { desc = "List keymaps" })
+keymap.set("n", "<Leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
+keymap.set("n", "<Leader>T", builtin.treesitter, { desc = "List function / variables" })
 
 -- undotree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
