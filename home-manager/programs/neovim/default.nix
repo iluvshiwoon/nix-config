@@ -17,6 +17,7 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      stylua
       lazygit
       prettierd
       eslint_d
@@ -30,10 +31,20 @@
       nodePackages.pyright
       vscode-extensions.vadimcn.vscode-lldb
       nixfmt
+      astyle
       clang-tools
+      cppcheck
     ];
 
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = autosave-nvim;
+        config = toLua "require('autosave').setup{}";
+      }
+      {
+        plugin = nvim-lint;
+        config = toLuaFile ./lua/plugins/lint.lua;
+      }
       lazygit-nvim
       {
         plugin = gitsigns-nvim;
@@ -55,6 +66,7 @@
         plugin = substitute-nvim;
         config = toLua "require('substitute').setup()";
       }
+      cmp-nvim-lsp
       nvim-autopairs
       lspkind-nvim
       {
@@ -131,8 +143,8 @@
         config = toLuaFile ./lua/plugins/cmp.lua;
       }
       {
-        plugin = null-ls-nvim;
-        config = toLuaFile ./lua/plugins/null-ls.lua;
+        plugin = conform-nvim;
+        config = toLuaFile ./lua/plugins/conform.lua;
       }
       {
         plugin = kanagawa-nvim;
