@@ -305,6 +305,26 @@
         "type": "github"
       }
     },
+    "nix-ld": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1701153607,
+        "narHash": "sha256-h+odOVyiGmEERMECoFOj5P7FPiMR8IPRzroFA4sKivg=",
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "rev": "bf5aa84a713c31d95b4307e442e966d6c7fd7ae7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1707956935,
@@ -496,6 +516,22 @@
         "type": "github"
       }
     },
+    "plugin-windex-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657668376,
+        "narHash": "sha256-mkBfIrltEXw6o8eygg60cwcJyVfS5y8Hx7vtagvF3Vo=",
+        "owner": "declancm",
+        "repo": "windex.nvim",
+        "rev": "1e86cba6f6f55ced60d17d6c6ebd51388a637b86",
+        "type": "github"
+      },
+      "original": {
+        "owner": "declancm",
+        "repo": "windex.nvim",
+        "type": "github"
+      }
+    },
     "prism": {
       "inputs": {
         "home-manager": "home-manager_2",
@@ -526,11 +562,13 @@
         "hyprland": "hyprland",
         "hyprpicker": "hyprpicker",
         "nix-colors": "nix-colors",
+        "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "plugin-betterTerm-nvim": "plugin-betterTerm-nvim",
         "plugin-header_42_vim": "plugin-header_42_vim",
         "plugin-norminette-vim": "plugin-norminette-vim",
+        "plugin-windex-nvim": "plugin-windex-nvim",
         "prism": "prism"
       }
     },
