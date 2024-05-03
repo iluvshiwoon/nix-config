@@ -23,6 +23,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true -- assume case sensitive when using mixed case
 
 -- random
+vim.g.lazygit_use_custom_config_file_path = 1
+vim.g.lazygit_config_file_path = '~/nix-config/home-manager/programs/neovim/config.yml'
 vim.o.cursorline = true
 vim.o.backspace = "indent,eol,start"
 

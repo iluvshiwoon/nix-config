@@ -46,6 +46,7 @@
         plugin = gitsigns-nvim;
         config = toLuaFile ./lua/plugins/gitsigns.lua;
       }
+
       {
         plugin = trouble-nvim;
         config = toLua "require('trouble').setup{}";
