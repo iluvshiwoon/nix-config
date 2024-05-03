@@ -10,6 +10,7 @@
       plugins = [ "git" "fzf" ];
     };
     initExtraFirst = ''
+      export PATH=/nix/store/66fl3das7xilj2fxwzhi3c07ww8j5027-clang-14.0.6/bin:$PATH
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
       eval "$(zoxide init --cmd cd zsh)"

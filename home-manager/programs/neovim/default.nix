@@ -33,7 +33,6 @@
       nixfmt
       astyle
       clang-tools
-      cppcheck
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -41,10 +40,7 @@
         plugin = autosave-nvim;
         config = toLua "require('autosave').setup{}";
       }
-      {
-        plugin = nvim-lint;
-        config = toLuaFile ./lua/plugins/lint.lua;
-      }
+
       lazygit-nvim
       {
         plugin = gitsigns-nvim;
