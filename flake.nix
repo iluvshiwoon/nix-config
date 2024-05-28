@@ -39,8 +39,8 @@
     plugin-norminette-vim.url = "github:alexandregv/norminette-vim";
     plugin-norminette-vim.flake = false;
 
-    plugin-formatter_42.url = "github:cacharle/c_formatter_42.vim";
-    plugin-formatter_42.flake = false;
+    plugin-windex-nvim.url = "github:declancm/windex.nvim";
+    plugin-windex-nvim.flake = false;
 
     # Shameless plug: looking for a way to nixify your themes and make
 

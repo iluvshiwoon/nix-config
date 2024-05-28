@@ -1,0 +1,3 @@
+[submodule "home-manager/programs/emacs/emacs.d/lambda-themes"]
+	path = home-manager/programs/emacs/emacs.d/lambda-themes
+	url = https://github.com/Lambda-Emacs/lambda-themes.git

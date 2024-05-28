@@ -17,6 +17,12 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      lazygit
+      prettierd
+      eslint_d
+      biome
+      nodePackages_latest.typescript-language-server
+      typescript
       lua-language-server
       nil
       ccls
@@ -28,19 +34,50 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      lazygit-nvim
       {
-        plugin = betterTerm-nvim;
-        config = toLua "require('betterTerm').setup()";
+        plugin = gitsigns-nvim;
+        config = toLuaFile ./lua/plugins/gitsigns.lua;
+      }
+      {
+        plugin = trouble-nvim;
+        config = toLua "require('trouble').setup{}";
+      }
+      {
+        plugin = surround-nvim;
+        config = toLua "require('surround').setup{mappings_style = 'surround'}";
+      }
+      {
+        plugin = nvim-autopairs;
+        config = toLuaFile ./lua/plugins/autopairs.lua;
+      }
+      {
+        plugin = substitute-nvim;
+        config = toLua "require('substitute').setup()";
+      }
+      nvim-autopairs
+      lspkind-nvim
+      {
+        plugin = indent-blankline-nvim;
+        config = toLua "require('ibl').setup({indent = { char = '┊' }})";
+      }
+
+      {
+        plugin = alpha-nvim;
+        config = toLuaFile ./lua/plugins/alpha.lua;
+
       }
 
       {
         plugin = nvim-lspconfig;
         config = toLuaFile ./lua/plugins/lsp.lua;
       }
+
       {
         plugin = nvim-dap-ui;
         config = toLuaFile ./lua/plugins/dap-ui.lua;
       }
+
       {
         plugin = nvim-dap;
         config = toLua ''
@@ -68,6 +105,11 @@
           }
         '';
       }
+      plenary-nvim
+      {
+        plugin = todo-comments-nvim;
+        config = toLua "require('todo-comments').setup()";
+      }
       vim-tmux-navigator
       harpoon
       header_42_vim
@@ -80,7 +122,6 @@
       vim-nix
       vim-fugitive
       norminette-vim
-      formatter_42
       {
         plugin = nvim-colorizer-lua;
         config = toLua "require('colorizer').setup()";
@@ -105,15 +146,33 @@
         plugin = telescope-nvim;
         config = toLuaFile ./lua/plugins/telescope.lua;
       }
+
+      {
+        plugin = nvim-tree-lua;
+        config = toLuaFile ./lua/plugins/tree.lua;
+      }
+
       telescope-fzf-native-nvim
       nvim-web-devicons
+      {
+        plugin = windex-nvim;
+        config = toLua "require('windex').setup()";
+      }
       {
         plugin = comment-nvim;
         config = toLua "require('Comment').setup()";
       }
       {
+        plugin = bufferline-nvim;
+        config = toLuaFile ./lua/plugins/bufferline.lua;
+      }
+      {
         plugin = lualine-nvim;
         config = toLuaFile ./lua/plugins/lualine.lua;
+      }
+      {
+        plugin = dressing-nvim;
+        config = toLua "require('dressing').setup{}";
       }
     ];
     extraLuaConfig = ''

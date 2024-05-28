@@ -23,9 +23,9 @@ vimPlugins = prev.vimPlugins // {
     name = "norminette-vim";
     src = inputs.plugin-norminette-vim;
   };
-  formatter_42 = prev.vimUtils.buildVimPlugin {
-    name = "formatter_42";
-    src = inputs.plugin-formatter_42;
+  windex-nvim = prev.vimUtils.buildVimPlugin {
+    name = "windex-nvim";
+    src = inputs.plugin-windex-nvim;
   };
  };
 };
