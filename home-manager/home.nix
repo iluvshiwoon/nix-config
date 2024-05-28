@@ -27,6 +27,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      (import inputs.emacs-overlay)
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -57,6 +58,13 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
+    nix-prefetch
+    nixfmt
+    ccls
+    glslang
+    multimarkdown
+    shellcheck
+    nodejs_21
     telegram-desktop
     vivaldi
     cool-retro-term
