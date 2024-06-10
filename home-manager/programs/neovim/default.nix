@@ -36,10 +36,10 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      {
-        plugin = autosave-nvim;
-        config = toLua "require('autosave').setup{}";
-      }
+      # {
+      #   plugin = autosave-nvim;
+      #   config = toLua "require('autosave').setup{}";
+      # }
 
       lazygit-nvim
       {
