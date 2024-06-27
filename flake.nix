@@ -33,6 +33,7 @@
     };
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     plugin-header_42_vim.url = "github:42Paris/42header";
     plugin-header_42_vim.flake = false;
 
