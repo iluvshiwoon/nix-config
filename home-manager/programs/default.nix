@@ -1,18 +1,13 @@
 {
   imports = [
     ./audacious
-    ./hyprland
     ./bat
     ./btop
-    ./discord
     ./mako
     ./git
     ./wofi
-    ./swaylock
     ./neovim
     ./kitty
-    ./waybar
-    ./foot
     ./emacs/emacs.nix
     ./tmux/tmux.nix
   ];

@@ -3,26 +3,21 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-    hypr-contrib.url = "github:hyprwm/contrib";
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     prism.url = "github:IogaMaster/prism";
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
-    plugin-betterTerm-nvim.url = "github:CRAG666/betterTerm.nvim";
-    plugin-betterTerm-nvim.flake = false;
-    hyprpicker.url = "github:hyprwm/hyprpicker";
     catppuccin-bat = {
       url = "github:catppuccin/bat";
       flake = false;
@@ -49,7 +44,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, nix-ld, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-ld, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -107,7 +102,6 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main home-manager configuration file <
-            hyprland.homeManagerModules.default
             ./home-manager/home.nix
           ];
         };

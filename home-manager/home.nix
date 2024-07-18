@@ -58,19 +58,15 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
-    telegram-desktop
     vivaldi
-    cool-retro-term
     cmake
     gnumake
     llvmPackages_latest.libcxxClang
     llvmPackages_latest.libcxx
     libtool
     tree
-    brightnessctl
     unzip
     jdk17
-    ripgrep
     coreutils
     fd
     bitwise # cli tool for bit / hex manipulation
@@ -80,14 +76,11 @@
     fzf # fuzzy finder
     jdk17 # java
     lazygit
-    libreoffice
     nitch # systhem fetch util
     nix-prefetch-github
     pipx # Install Python applications in isolated environments
-    prismlauncher # minecraft launcher
     ripgrep # grep replacement
-    rnix-lsp
-    soundwireserver # pass audio to android phone
+    #rnix-lsp
     todo # cli todo list
     toipe # typing test in the terminal
     cinnamon.nemo-with-extensions # file manager
