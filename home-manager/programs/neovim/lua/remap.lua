@@ -65,6 +65,7 @@ keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
 --telescope
 local builtin = require('telescope.builtin')
+
 keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "Fuzzy find files" })
 keymap.set("n", "<Leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
 keymap.set("n", "<Leader>fs", builtin.live_grep, { desc = "Find string" })
