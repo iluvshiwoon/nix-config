@@ -8,7 +8,16 @@ local todo_comments = require("todo-comments")
 keymap.set("n", "[t", function() todo_comments.jump_next() end, { desc = "Next todo comment" })
 keymap.set("n", "]t", function() todo_comments.jump_prev() end, { desc = "Previous todo comment" })
 keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
-
+keymap.set({ "n", "v" }, "<leader>mp", function()
+	require('conform').format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
+end, { desc = "Format file or range (in visual mode)" })
+keymap.set("n", "<leader>l", function()
+	require('lint').try_lint()
+end, { desc = "Trigger linting for current file" })
 -- substitute
 local substitute = require('substitute')
 keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
@@ -56,6 +65,7 @@ keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
 --telescope
 local builtin = require('telescope.builtin')
+
 keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "Fuzzy find files" })
 keymap.set("n", "<Leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
 keymap.set("n", "<Leader>fs", builtin.live_grep, { desc = "Find string" })
@@ -87,15 +97,6 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 keymap.set("n", "Q", "<nop>")
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-local lsp_formatting = function(bufnr)
-    vim.lsp.buf.format({
-        filter = function(client)
-            return client.name == "null-ls"
-        end,
-        bufnr = bufnr,
-    })
-end
-
 keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")

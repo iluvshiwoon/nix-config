@@ -12,11 +12,13 @@
     '';
   in {
     enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      stylua
       lazygit
       prettierd
       eslint_d
@@ -30,15 +32,22 @@
       nodePackages.pyright
       vscode-extensions.vadimcn.vscode-lldb
       nixfmt
+      astyle
       clang-tools
     ];
 
     plugins = with pkgs.vimPlugins; [
+      # {
+      #   plugin = autosave-nvim;
+      #   config = toLua "require('autosave').setup{}";
+      # }
+
       lazygit-nvim
       {
         plugin = gitsigns-nvim;
         config = toLuaFile ./lua/plugins/gitsigns.lua;
       }
+
       {
         plugin = trouble-nvim;
         config = toLua "require('trouble').setup{}";
@@ -55,6 +64,7 @@
         plugin = substitute-nvim;
         config = toLua "require('substitute').setup()";
       }
+      cmp-nvim-lsp
       nvim-autopairs
       lspkind-nvim
       {
@@ -90,7 +100,6 @@
                   args = {'--port', "''${port}"},
               }
           }
-
           dap.configurations.c = {
             {
               name = "Launch file",
@@ -98,6 +107,20 @@
               request = "launch",
               program = function()
                 return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+              end,
+              cwd = "''${workspaceFolder}",
+              stopOnEntry = false,
+            },
+            {
+              name = "Args",
+              type = "codelldb",
+              request = "launch",
+              program = function()
+                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+              end,
+              args = function()
+                local args_string = vim.fn.input('Arguments: ')
+                return vim.split(args_string, " +")
               end,
               cwd = "''${workspaceFolder}",
               stopOnEntry = false,
@@ -131,8 +154,8 @@
         config = toLuaFile ./lua/plugins/cmp.lua;
       }
       {
-        plugin = null-ls-nvim;
-        config = toLuaFile ./lua/plugins/null-ls.lua;
+        plugin = conform-nvim;
+        config = toLuaFile ./lua/plugins/conform.lua;
       }
       {
         plugin = kanagawa-nvim;
