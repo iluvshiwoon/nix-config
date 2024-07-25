@@ -58,6 +58,7 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
+    bemoji
     nix-prefetch
     nixfmt
     ccls

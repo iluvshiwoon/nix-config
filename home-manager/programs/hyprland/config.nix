@@ -155,6 +155,7 @@
       bind = $mainMod, P, pseudo,
       bind = $mainMod, J, togglesplit,
       bind = $mainMod, E, exec, nemo
+      bind = $mainMod SHIFT, E, exec, bemoji
       bind = $mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped
       bind = $mainMod, C ,exec, hyprpicker -a
       bind = $mainMod, G,exec, $HOME/.local/bin/toggle_layout
