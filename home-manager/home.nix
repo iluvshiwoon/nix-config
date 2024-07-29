@@ -58,6 +58,9 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
+    unstable.darktable
+    nvtop
+    python312Packages.gpustat
     bemoji
     nix-prefetch
     nixfmt
@@ -137,6 +140,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
