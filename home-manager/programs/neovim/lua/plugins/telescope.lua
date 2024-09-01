@@ -4,7 +4,7 @@ require('telescope').setup({
             i = {
                 ["<C-k>"] = "move_selection_previous",
                 ["<C-j>"] = "move_selection_next",
-                ["<C-q>"] = require('telescope.actions').send_selected_to_qflist + require('telescope.actions').open_qflist,           }
+                ["<C-q>"] = require('telescope.actions').smart_send_to_qflist + require('telescope.actions').open_qflist,}
         }
     },
 	extensions = {
