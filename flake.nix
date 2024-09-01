@@ -1,6 +1,21 @@
 {
   description = "Your new nix config";
 
+  # the nixConfig here only affects the flake itself, not the system configuration!
+  nixConfig = {
+    # override the default substituters
+    trusted-substituters = [
+      "https://cache.nixos.org"
+
+      # nix community's cache server
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      # nix community's cache server public key
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -92,6 +107,11 @@
              nix-ld.nixosModules.nix-ld
             { programs.nix-ld.dev.enable = true; }
            ./nixos/configuration.nix
+            {
+               # given the users in this list the right to specify additional substituters via:
+            #    1. `nixConfig.substituters` in `flake.nix`
+           nix.settings.trusted-users = [ "iluvshiwoon" ];
+            }
           ];
         };
       };
