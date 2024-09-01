@@ -6,6 +6,7 @@
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" "RobotoMono" ]; })
     pkgs.twemoji-color-font
     pkgs.noto-fonts-emoji
+    pkgs.cantarell-fonts
   ];
 
   gtk = {
