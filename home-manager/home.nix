@@ -59,7 +59,6 @@
   colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
   home.packages = with pkgs; [
     unstable.darktable
-    nvtop
     python312Packages.gpustat
     bemoji
     nix-prefetch
@@ -70,8 +69,8 @@
     shellcheck
     nodejs_21
     telegram-desktop
-    vivaldi
     cool-retro-term
+    vivaldi
     cmake
     gnumake
     llvmPackages_latest.libcxxClang
@@ -105,7 +104,7 @@
     yazi # terminal file manager
     youtube-dl
     gnome.zenity
-
+    smplayer
     bleachbit # cache cleaner
     cmatrix
     gparted # partition manager
