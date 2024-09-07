@@ -19,10 +19,10 @@
       #     src = ./emacs.el;
       #     inherit (config.xdg) configHome dataHome;
       #   };
-      defaultInitFile = false;
+      defaultInitFile = true;
 
       # Package is optional, defaults to pkgs.emacs
-      package = pkgs.emacs;
+      package = pkgs.emacs-git;
 
       # By default emacsWithPackagesFromUsePackage will only pull in
       # packages with `:ensure`, `:ensure t` or `:ensure <package name>`.
@@ -55,17 +55,18 @@
       # };
     })
   ];
-
-  home.file = {
-    ".emacs.d" = {
-      source = ./emacs.d;
-      recursive = true;
-    };
-    ".emacs.d/nano-emacs" = {
-      source = builtins.fetchGit {
-        url = "https://github.com/rougier/nano-emacs";
-        rev = "b8631088220dbbcd885ad1353bdc52b569655f85";
-      };
-    };
-  };
 }
+#
+#   home.file = {
+#     ".emacs.d" = {
+#       source = ./emacs.d;
+#       recursive = true;
+#     };
+#     ".emacs.d/nano-emacs" = {
+#       source = builtins.fetchGit {
+#         url = "https://github.com/rougier/nano-emacs";
+#         rev = "b8631088220dbbcd885ad1353bdc52b569655f85";
+#       };
+#     };
+#   };
+# }
