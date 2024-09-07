@@ -1,5 +1,5 @@
 {
-  description = "My new nix config";
+  description = "Your new nix config";
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
@@ -47,12 +47,7 @@
       flake = false;
     };
 
-    # emacs-overlay.url = "github:nix-community/emacs-overlay";
-    myEmacs = {
-      url = "github:iluvshiwoon/emacs-flake";
-      flake = true;
-    };
-
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     plugin-header_42_vim.url = "github:42Paris/42header";
     plugin-header_42_vim.flake = false;
 
