@@ -1,18 +1,18 @@
-{pkgs, inputs, config, ... }:
-let 
-  my_emacs = pkgs.emacsWithPackagesFromUsePackage {
-    config = ./init.el;
-    defaultInitFile = true;
-    package = pkgs.emacs29;
-    alwaysEnsure = true;
-    alwaysTangle = true;
+{ pkgs, inputs, config, ... }: 
+  {
+  home.packages = [
+    (pkgs.emacsWithPackagesFromUsePackage {
+      config = ./emacs.d/init.el;
+      defaultInitFile = true;
+      package = pkgs.emacs-git;
+      alwaysEnsure = true;
+      alwaysTangle = true;
+    })
+  ];
+  home.file = {
+    ".emacs.d/" = {
+      source = ./emacs.d;
+      recursive = true;
+    };
   };
-in
-{
-  services.emacs = {
-    enable = true;
-    package = my_emacs;
-  };
-
-  home.file.".emacs.d/init.el".source = ./init.el;
 }

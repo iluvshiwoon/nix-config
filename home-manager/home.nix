@@ -27,8 +27,8 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      (import inputs.emacs-overlay)
-
+      inputs.emacs-overlay.overlays.package
+      inputs.emacs-overlay.overlays.emacs
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
