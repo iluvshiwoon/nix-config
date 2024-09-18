@@ -1,11 +1,41 @@
 (setq inhibit-startup-screen t)
+(setq auto-save-default nil)
+(setq fringe-mode 0)
+(setq make-backup-files nil)
+(require 'olivetti)
+(add-hook 'org-mode-hook 'olivetti-mode)
+(setq olivetti-body-width 80)
 (require 'evil)
 (evil-mode 1)
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 (require 'evil-org-agenda)
 (evil-org-agenda-set-keys)
+
+(defun my-toggle-org-modern ()
+  "Toggle org-modern mode based on Evil mode state, only in Org buffers"
+  (when (eq major-mode 'org-mode)
+    (if (eq evil-state 'insert)
+        (org-modern-mode -1)
+      (org-modern-mode 1))))
+
+(add-hook 'evil-insert-state-entry-hook 'my-toggle-org-modern)
+(add-hook 'evil-normal-state-entry-hook 'my-toggle-org-modern)
+(add-hook 'evil-visual-State-entry-hook 'my-toggle-org-modern)
+
+(add-hook 'olivetti-mode-hook
+          (lambda ()
+            (set-face-attribute 'default nil :height 120)))
+(defun my-text-scale-adjust ()
+  (let ((width (window-width)))
+    (if (> width 160)
+        (text-scale-set 2.3)
+      (if (> width 120)
+          (text-scale-set 1.8)
+        (text-scale-set 1.3)))))
+(add-hook 'window-configuration-change-hook 'my-text-scale-adjust)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -53,5 +83,3 @@
 ;; Ellipsis styling
 (setq org-ellipsis "…")
 (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
-
-(global-org-modern-mode)
