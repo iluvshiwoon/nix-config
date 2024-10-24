@@ -11,13 +11,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./scripts
     ./shell
     ./programs
-    ./modules
     ./theme
-    inputs.nix-colors.homeManagerModules.default
-    inputs.prism.homeModules.prism
   ];
 
   nixpkgs = {
@@ -64,61 +60,12 @@
     llvmPackages_latest.libcxxClang
     llvmPackages_latest.libcxx
     libtool
-    tree
-    unzip
-    jdk17
     coreutils
-    fd
-    bitwise # cli tool for bit / hex manipulation
-    eza # ls replacement
-    entr # perform action when file change
-    file # Show file information
     fzf # fuzzy finder
-    jdk17 # java
-    lazygit
-    nitch # systhem fetch util
     nix-prefetch-github
-    pipx # Install Python applications in isolated environments
     ripgrep # grep replacement
-    #rnix-lsp
-    todo # cli todo list
-    toipe # typing test in the terminal
-    cinnamon.nemo-with-extensions # file manager
-    yazi # terminal file manager
-    youtube-dl
-    gnome.zenity
-
-    bleachbit # cache cleaner
-    cmatrix
-    gparted # partition manager
-    ffmpeg
-    imv # image viewer
-    libnotify
     man-pages # extra man pages
-    mpv # video player
-    ncdu # disk space
-    openssl
-    pamixer # pulseaudio command line mixer
-    pavucontrol # pulseaudio volume controle (GUI)
-    playerctl # controller for media players
-    qalculate-gtk # calculator
-    unzip
     wget
-    xdg-utils
-
-    rofi
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    #(nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -127,9 +74,6 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.11";
