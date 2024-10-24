@@ -14,8 +14,6 @@
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
-    nix-colors.url = "github:misterio77/nix-colors";
-    prism.url = "github:IogaMaster/prism";
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin-bat = {
@@ -34,10 +32,6 @@
 
     plugin-norminette-vim.url = "github:alexandregv/norminette-vim";
     plugin-norminette-vim.flake = false;
-
-    plugin-windex-nvim.url = "github:declancm/windex.nvim";
-    plugin-windex-nvim.flake = false;
-
     # Shameless plug: looking for a way to nixify your themes and make
 
     # everything match nicely? Try nix-colors!
