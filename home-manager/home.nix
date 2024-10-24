@@ -71,7 +71,7 @@
     nodejs_21
     telegram-desktop
     cool-retro-term
-    vivaldi
+    unstable.vivaldi
     cmake
     gnumake
     llvmPackages_latest.libcxxClang
